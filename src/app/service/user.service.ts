@@ -29,7 +29,6 @@ export class UserService {
   login(form: any) {
     const url = `${this.url}/login `;
     console.log(form)
-    const tempUrl="http://localhost:3000/user/login"
-    return this.http.post(tempUrl, form , { headers: '', responseType: 'json' });
+    return this.http.post(url, form , { headers: '', responseType: 'json' });
   }
 }
