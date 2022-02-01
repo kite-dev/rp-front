@@ -28,7 +28,6 @@ export class UserService {
 
   login(form: any) {
     const url = `${this.url}/login `;
-    console.log(form)
     return this.http.post(url, form , { headers: '', responseType: 'json' });
   }
 }

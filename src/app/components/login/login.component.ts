@@ -31,9 +31,9 @@ export class LoginComponent implements OnInit {
       (data: any) => {
         console.log("entra aqui?")
         console.log(data)
-        if(data.length === 0){
+        if(data.message==='USER_EXISTNT'){
           this.errors.push("USER_EXISTNT");
-          throw new Error("USER_EXISTS");
+          throw new Error("USER_EXISTNT");
         }else{
           this._router.navigate(['/login']);
         }
