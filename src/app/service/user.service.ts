@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
   http: any;
-  public url = "https://rpmongo.herokuapp.com/user";
+  public url = "https://localhost:3000/user";
   constructor(http: HttpClient) {
     this.http = http;
   }
@@ -15,7 +15,7 @@ export class UserService {
     const url = `${this.url}/email/${email} `;
     return this.http.get(url);
   }
-  
+
   registerUser(form: any) {
     const url = `${this.url} `;  
     if(form.password1 != form.password2){
@@ -28,6 +28,7 @@ export class UserService {
 
   login(form: any) {
     const url = `${this.url}/login `;
+    console.log(form)
     return this.http.post(url, form);
   }
 }
