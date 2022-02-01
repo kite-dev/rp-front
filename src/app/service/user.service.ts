@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
   http: any;
-  public url = "https://localhost:3000/user";
+  public url = "https://rpmongo.herokuapp.com/user";
   constructor(http: HttpClient) {
     this.http = http;
   }
