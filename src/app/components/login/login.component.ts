@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
   submitForm(){
     this._userService.login(this.loginForm.value).subscribe(
       (data: any) => {
+        console.log("entra aqui?")
         console.log(data)
         if(data.length === 0){
           this.errors.push("USER_EXISTNT");
@@ -38,6 +39,7 @@ export class LoginComponent implements OnInit {
         }
     },
     (error: any) => {
+      console.log("aca en error")
       console.log(error)
     });
   }
