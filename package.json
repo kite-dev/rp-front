@@ -2,7 +2,7 @@
   "name": "rp-front",
   "version": "0.0.0",
   "scripts": {
-    "heroku-postbuild": "cd rp-front && npm install",
+    "heroku-postbuild": "npm install",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
