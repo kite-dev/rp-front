@@ -1,0 +1,67 @@
+<div class="container mt-5">
+    <div class="col-12 mt-6">
+        <form [formGroup]="associateForm" (ngSubmit) ="submitForm()" class="form-horizontal">
+            <div class="row form-group mb-6">
+                <div class="col-6">
+                    <label for="rut" class="form-label">Rut</label>
+                    <input type="text" formControlName="rut" class="form-control" id="rut" aria-describedby="emailHelp">
+                </div>
+                <div class="col-6">
+                    <label for="name" class="form-label">Nombre</label>
+                    <input type="text" formControlName="name" class="form-control" id="name" aria-describedby="emailHelp">
+                </div>
+            </div>
+            <div class="row form-group mb-6">
+                <div class="col-6">
+                    <label for="email" class="form-label">Correo</label>
+                    <input type="email" formControlName="email" class="form-control" id="email" aria-describedby="emailHelp">
+                </div>
+                <div class="col-6">
+                    <label for="cellphone" class="form-label">Telefono</label>
+                    <input type="text" formControlName="cellphone" class="form-control" id="cellphone" aria-describedby="emailHelp">
+                </div>
+            </div>
+            <div class="row form-group mt-5">
+                <div class="col-6 dropdown mb-6">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01">Banco</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01" formControlName="bank">
+                          <option selected>Seleccione Banco</option>
+                          <option *ngFor="let bank of banks" [value]="bank.id">{{bank.name}}</option>
+                        </select>
+                      </div>
+                      
+                </div>
+                <div class="col-6 dropdown">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01">Tipo de cuenta</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01" formControlName="type">
+                          <option selected>Seleccione tipo de cuenta</option>
+                          <option *ngFor="let type of types" [value]="type.id">{{type.name}}</option>
+                        </select>
+                      </div>
+                </div>
+                
+            </div>
+            <div class="row form-group mb-6">
+                <div class="col-6">
+                    <label for="number" class="form-label">Numero de cuenta</label>
+                    <input type="number" formControlName="number" class="form-control" id="number" aria-describedby="emailHelp">
+                </div>
+            </div>
+            <br>
+            <div class="row form-group-mb-6  mt-6 text-center">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary " [disabled]="!associateForm.valid">Crear</button>
+                </div>
+                
+            </div>
+            <br><br>
+        </form>
+    </div>
+</div>
+

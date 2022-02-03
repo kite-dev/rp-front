@@ -8,12 +8,24 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './components/home/home.component';
+import { NavbarComponent } from './components/home/navbar/navbar.component';
+import { TransferComponent } from './components/home/transfer/transfer.component';
+import { HistoryComponent } from './components/home/history/history.component';
+import { AssociateComponent } from './components/home/associate/associate.component';
+import { FooterComponent } from './components/home/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    NavbarComponent,
+    TransferComponent,
+    HistoryComponent,
+    AssociateComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

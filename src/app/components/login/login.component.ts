@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms'
 import { UserService } from '../../service/user.service';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router} from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +12,6 @@ export class LoginComponent implements OnInit {
   public errors: any = [];
   constructor( private _form: FormBuilder,
     private _userService: UserService,
-    private _route: ActivatedRoute,
     private _router: Router) {
 
   }
@@ -29,17 +28,16 @@ export class LoginComponent implements OnInit {
   submitForm(){
     this._userService.login(this.loginForm.value).subscribe(
       (data: any) => {
-        console.log("entra aqui?")
-        console.log(data)
-        if(data.message==='USER_EXISTNT'){
-          this.errors.push("USER_EXISTNT");
-          throw new Error("USER_EXISTNT");
+        if(data.message==='USER_FOUNDNT'){
+          this.errors.push("USER_FOUNDNT");
+          throw new Error("USER_FOUNDNT");
         }else{
-          this._router.navigate(['/login']);
+          localStorage.setItem('user', JSON.stringify(this.loginForm.value.email));
+          this._router.navigate(['home']);
+          return false;
         }
     },
     (error: any) => {
-      console.log("aca en error")
       console.log(error)
     });
   }
