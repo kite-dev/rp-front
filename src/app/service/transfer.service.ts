@@ -17,7 +17,7 @@ export class TransferService {
     return this.http.post(url, form , { headers: '', responseType: 'json' });
   }
   getTransfers(email: String){
-     this.url = "http://127.0.0.1:3000/transfer";
+     //this.url = "http://127.0.0.1:3000/transfer";
       const url = `${this.url}/${email} `;
       return this.http.get(url);
   }
