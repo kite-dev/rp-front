@@ -12,7 +12,7 @@ export class HistoryComponent implements OnInit {
     autoClose: false,
     keepAfterRouteChange: false
   };
-  public dtOptions = {
+  public dtOptions:any = {
     pagingType: 'full_numbers',
     pageLength: 10,
     dom: 'Bfrtip',
