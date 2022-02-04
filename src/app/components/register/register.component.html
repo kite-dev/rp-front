@@ -1,26 +1,22 @@
 
-<div class='container-fluid'>
-    <div class=" col-8 ">
-        <form [formGroup]="registerForm" (ngSubmit) ="submitForm()">
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Correo</label>
-              <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-              <input type="password"  formControlName="password1" class="form-control" id="exampleInputPassword1">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Repita Contraseña</label>
-                <input type="password"  formControlName="password2" class="form-control" id="exampleInputPassword1">
-              </div>
-            <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Registrar</button>
-            <br>
-            <div class="error" *ngIf="errors.length > 0">
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
 
-            </div>
-          </form>
+    <!-- Icon -->
+    <div class="fadeIn first">
+      Registrarse
     </div>
+
+    <!-- Login Form -->
+    <form  [formGroup]="registerForm" (ngSubmit) ="submitForm()">
+      <input type="email" id="login" class="fadeIn second" name="email"  formControlName="email"  placeholder="Correo">
+      <input type="password" id="password1" class="fadeIn third" name="password1" formControlName="password1" placeholder="Contraseña">
+      <input type="password" id="password2" class="fadeIn third" name="password2" formControlName="password2" placeholder="Repita">
+      <button type="submit" class="fadeIn fourth" [disabled]="!registerForm.valid || isLoading" >Ingresar</button>
+    </form>
+    <div id="formFooter">
+      <a class="underlineHover" routerLinkActive="active" id="./login" [routerLink]="['/login']" >Volver</a>
+    </div>
+  </div>
 </div>
-
-

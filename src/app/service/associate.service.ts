@@ -17,8 +17,8 @@ export class AssociateService {
     return this.http.post(url, form , { headers: '', responseType: 'json' });
   }
   getAssociate(email: String) {
-   // this.url = "http://127.0.0.1:3000/associate";
-    const url = `${this.url} `;
-    return this.http.get(email);
+    this.url = "http://127.0.0.1:3000/associate";
+    const url = `${this.url}/${email} `;
+    return this.http.get(url);
   }
 }

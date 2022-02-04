@@ -1,1 +1,42 @@
-<p>transfer works!</p>
+<div class="container mt-5">
+    <div class="col-12 mt-6">
+        <form [formGroup]="transferForm" (ngSubmit) ="submitForm()" class="form-horizontal">
+            <div class="row form-group mt-5">
+                <div class="col-6 dropdown mb-6">
+                    <select class="form-control " formControlName="destiny"  (change)="changeSelected()">
+                        <option selected>Seleccione Destinatario</option>
+                   <option *ngFor="let associate of associates" 
+                       [value]="associate.rut">
+                       {{associate.name}}</option>
+                    </select>
+                </div>
+                      
+            </div>
+            <hr *ngIf="showSelectedDetail">
+            <div *ngIf="showSelectedDetail">
+            Nombre: {{selectedAssociate.name}} <br>
+            Rut: {{selectedAssociate.rut}} <br>
+            Correo: {{selectedAssociate.email}} <br>
+            Banco: {{selectedAssociate.bank_name}} <br>
+            Numero de cuenta: {{selectedAssociate.number}} <br>
+            Tipo de cuenta: {{selectedAssociate.type_name}}
+            </div>
+            <hr *ngIf="showSelectedDetail">
+            <div class="row form-group mb-6" *ngIf="showSelectedDetail">
+                <div class="col-6">
+                    <label for="number" class="form-label">Monto</label>
+                    <input type="number" formControlName="amount" class="form-control" id="number" aria-describedby="emailHelp">
+                </div>
+            </div>
+            <br>
+            <div class="row form-group-mb-6  mt-6 text-center" *ngIf="showSelectedDetail">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary " [disabled]="!transferForm.valid">Crear</button>
+                </div>
+                
+            </div>
+            <br><br>
+        </form>
+    </div>
+</div>
+

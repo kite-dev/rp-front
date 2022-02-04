@@ -1,1 +1,31 @@
-<p>history works!</p>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <h1>Historial</h1>
+            <hr>
+        </div>
+    </div>
+    <table datatable [dtOptions]="dtOptions"  class="row-border hover" *ngIf="data.length > 0">
+        <thead>
+          <tr>
+            <th>Destinatario</th>
+            <th>Rut</th>
+            <th>Banco</th>
+            <th>Tipo de cuenta</th>
+            <th class="text-right">monto</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let transfer of data">
+            <td>{{transfer.name}}</td>
+           <td>{{transfer.rut}}</td>
+            <td>{{transfer.bank_name}}</td>
+            <td>{{transfer.type_name}}</td>
+            <td>{{transfer.amount}}</td>
+          </tr>
+        </tbody>
+      </table>
+    
+      
+</div>

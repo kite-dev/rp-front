@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { filter , subscribeOn} from 'rxjs/operators';
 
 import { NavigationEnd, NavigationError, NavigationStart, Router , Event} from '@angular/router';
@@ -14,10 +15,15 @@ export class AppComponent {
    _router.events.subscribe((event:Event) => {
       if(event instanceof NavigationEnd ){
         console.log(event.url)
-        if(event.url === '/login' || event.url === '/register'){
+        if(event.url === '/login' || event.url === '/' || event.url === '/register'){
           this.hideNavBar = true;
         } else {
-          this.hideNavBar = false;
+          if(!localStorage.getItem('user')){
+            this._router.navigate(['login']);
+          } else {
+            this.hideNavBar = false;
+          }
+          
         }
       }
     });

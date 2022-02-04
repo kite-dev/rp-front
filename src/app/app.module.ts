@@ -14,6 +14,8 @@ import { TransferComponent } from './components/home/transfer/transfer.component
 import { HistoryComponent } from './components/home/history/history.component';
 import { AssociateComponent } from './components/home/associate/associate.component';
 import { FooterComponent } from './components/home/footer/footer.component';
+import { DataTablesModule } from "angular-datatables";
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { FooterComponent } from './components/home/footer/footer.component';
     TransferComponent,
     HistoryComponent,
     AssociateComponent,
-    FooterComponent
+    FooterComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { FooterComponent } from './components/home/footer/footer.component';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DataTablesModule
     ],
   exports: [
   ],

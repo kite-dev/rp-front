@@ -1,26 +1,22 @@
 
-<div class='container-fluid'>
-  <div class=" col-8 ">
-      <form [formGroup]="loginForm" (ngSubmit) ="submitForm()">
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Correo</label>
-            <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-            <input type="password"  formControlName="password" class="form-control" id="exampleInputPassword1">
-          </div>
-          <div class="mb-3">
-          <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Ingresar</button>
-          <a class="ml-3" routerLinkActive="active" id="./register" [routerLink]="['/register']">Eres nuevo?, Registrate</a>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
 
-          </div>
+    <!-- Icon -->
+    <div class="fadeIn first">
+      Bienvenido
+    </div>
 
-          <div class="error" *ngIf="errors.length > 0">
+    <!-- Login Form -->
+    <form  [formGroup]="loginForm" (ngSubmit) ="submitForm()">
+      <input type="email" id="login" class="fadeIn second" name="email"  formControlName="email"  placeholder="Correo">
+      <input type="password" id="password" class="fadeIn third" name="password" formControlName="password" placeholder="Contraseña">
+      <button type="submit" class="fadeIn fourth" [disabled]="!loginForm.valid">Ingresar</button>
+    </form>
 
-          </div>
-        </form>
+    <div id="formFooter">
+      <a class="underlineHover" routerLinkActive="active" id="./register" [routerLink]="['/register']">Eres nuevo?, Registrate</a>
+    </div>
   </div>
 </div>
-
-

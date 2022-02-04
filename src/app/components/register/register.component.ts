@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms'
+import { Router } from '@angular/router';
 import { UserService } from '../../service/user.service';
+import { AlertService } from '../alert/alert.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -8,11 +10,19 @@ import { UserService } from '../../service/user.service';
 })
 export class RegisterComponent implements OnInit {
   public registerForm: any;
+  public isLoading: boolean = false;
+  options = {
+    autoClose: false,
+    keepAfterRouteChange: false
+  };
   password1: any;
   password2: any;
   public errors: any = [];
   constructor( private _form: FormBuilder,
-                private _userService: UserService) { 
+                private _userService: UserService,
+                private _router: Router,
+                private alertService: AlertService) {
+
 
   }
 
@@ -27,20 +37,30 @@ export class RegisterComponent implements OnInit {
     })
   }
   submitForm(){
+    this.isLoading = true;
     this._userService.getUser(this.registerForm.value.email).subscribe(
       (data: any) => {
         if(data.length > 0){
-          this.errors.push("USER_EXISTS");
+          this.alertService.error('El usuario ya existe', this.options);
+          this.isLoading = false;
           throw new Error("USER_EXISTS");
+         
         }else{
           this._userService.registerUser(this.registerForm.value).subscribe(
             (data: any) => {
-              console.log(data);
+              console.log(data)
+              if(data.message==='CREATED'){
+                this.options.keepAfterRouteChange = true;
+                this.alertService.success('Usuario creado correctamente, por favor inicie sesión', this.options);
+                this._router.navigate(['login']);
+              }
+              this.isLoading = false;
             },
             (error: any) => {
               console.log(error);
             });
         }
+        
     });
   }
       

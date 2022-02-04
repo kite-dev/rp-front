@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms'
 import { BankService } from 'src/app/service/bank.service';
 import { AssociateService } from 'src/app/service/associate.service';
+import { AlertService } from '../../alert/alert.service';
 @Component({
   selector: 'app-associate',
   templateUrl: './associate.component.html',
@@ -14,28 +15,32 @@ export class AssociateComponent implements OnInit {
   public types = [{
     id: 1,
     name: 'Vista',
-  },
-  {
-    id: 2,
-    name: 'Corriente',
-  },
-  {
-    id: 3,
-    name: 'Ahorro',
-  },
-  {
-    id: 4,
-    name: 'Rut',
-  }
-];
+    },
+    {
+      id: 2,
+      name: 'Corriente',
+    },
+    {
+      id: 3,
+      name: 'Ahorro',
+    },
+    {
+      id: 4,
+      name: 'Rut',
+    }
+  ];
+  options = {
+    autoClose: false,
+    keepAfterRouteChange: false
+  };
   constructor(private _form: FormBuilder,
               private _bankService: BankService,
-              private _associateService: AssociateService) { }
+              private _associateService: AssociateService,
+              private alertService: AlertService) { }
 
   ngOnInit(): void {
     this.getBanks();
     this.initForm();
-    console.log(localStorage.getItem('user'));
   }
   initForm(){
     this.associateForm = this._form.group({
@@ -55,22 +60,24 @@ export class AssociateComponent implements OnInit {
         this.banks = data.banks;
       },
       (error: any) => {
-        console.log('ERROR')
+        this.alertService.error('Error al obtener bancos', this.options);
       }
     )
   }
   submitForm(){
    
     const data = this.parseForm();
-    console.log(data);
     this._associateService.registerAssociate(data)
     .subscribe(
       (data: any) => {
         if(data.message === 'CREATED') {
-          console.log("Created");
+          this.alertService.success('Asociado creado con exito', this.options);
+        } else {
+          this.alertService.error('Error al crear asociado', this.options);
         }
       },
       (error: any) => {
+        this.alertService.error('Error al crear asociado', this.options);
       }
     );
   }
@@ -81,6 +88,7 @@ export class AssociateComponent implements OnInit {
     });
     if(!type){
       this.errors.push("TYPE_NOT_FOUND");
+
       throw new Error("TYPE_NOT_FOUND");
     }
     const user = localStorage.getItem('user');
@@ -94,6 +102,7 @@ export class AssociateComponent implements OnInit {
       bank_name: bank.name,
       type: this.associateForm.value.type,
       type_name: type.name,
+      number: this.associateForm.value.number,
     }
     return data;
   }
