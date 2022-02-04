@@ -14,7 +14,6 @@ import { TransferComponent } from './components/home/transfer/transfer.component
 import { HistoryComponent } from './components/home/history/history.component';
 import { AssociateComponent } from './components/home/associate/associate.component';
 import { FooterComponent } from './components/home/footer/footer.component';
-import { DataTablesModule } from "angular-datatables";
 import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
@@ -37,7 +36,6 @@ import { AlertComponent } from './components/alert/alert.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DataTablesModule
     ],
   exports: [
   ],
