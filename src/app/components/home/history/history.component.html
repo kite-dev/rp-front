@@ -7,7 +7,7 @@
         </div>
     </div>
     <input type="text" [(ngModel)]="searchText" placeholder="Buscar..." (keyup)="filterData($event)" class="form-control">
-    <table  class="table row-border hover" *ngIf="filteredData.length > 0">
+    <table  class="table hover" *ngIf="filteredData.length > 0">
         <thead>
           <tr>
             <th>Destinatario</th>
@@ -18,7 +18,7 @@
           </tr>
         </thead>
         <tbody >
-          <tr *ngFor="let transfer of filteredData">
+          <tr *ngFor="let transfer of paginatedData[currentIndex]">
             <td>{{transfer.name}}</td>
             <td>{{transfer.rut}}</td>
             <td>{{transfer.bank_name}}</td>
@@ -27,6 +27,9 @@
           </tr>
         </tbody>
       </table>
+    <button class="btn float-right " (click)="showNext()">Siguiente</button>
+        <button  *ngFor="let page of pageArray"class="btn float-right" (click)="showPage(page)" [class.active]="page == currentIndex">{{page}}</button>
+    <button class="btn float-right" (click)="showPrevious()">Anterior</button>
     
       
 </div>

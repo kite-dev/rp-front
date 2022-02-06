@@ -20,6 +20,9 @@ export class HistoryComponent implements OnInit {
   public filteredData: any = [];
   public data: any = [];
   public currentUserEmail = '';
+  public currentIndex = 0;
+  public paginatedData: any = [];
+  public pageArray: any= [];
   constructor(private _transferService:TransferService,
               private alertService: AlertService) { }
   
@@ -38,6 +41,7 @@ export class HistoryComponent implements OnInit {
       (data: any) => {
         this.data = data.reverse();
         this.filteredData = this.data;
+        this.reOrderData();
       },
       (error: any) => {
         this.alertService.error("Error al obtener los datos", this.options);
@@ -53,8 +57,50 @@ export class HistoryComponent implements OnInit {
       || item.type_name.toLowerCase().includes(this.searchText.toLowerCase())
       || item.amount.toLowerCase().includes(this.searchText.toLowerCase())
     })
+    this.reOrderData();
+  }
+  showPrevious(){
+    if(this.currentIndex > 0){
+      this.currentIndex--;
+    }
+
+  }
+  showNext(){
+    if(this.currentIndex < this.paginatedData.length - 1){
+      this.currentIndex++;
+    }
+
+  }
+  reOrderData(){
+    const data: any = [];
+    let tempIndex = 0;
+    let internalCounter = 0;
+
+    this.filteredData.forEach((item: any) => {
+      if(!data[tempIndex]){
+        data.push([]);
+      }
+      data[tempIndex].push(item);
+      internalCounter++;
+      if(internalCounter === 5){
+        tempIndex++;
+        internalCounter = 0;
+        
+      }
+    })
+    this.paginatedData = data;
+    this.setPaging();
+  }
+  setPaging(){
+    const last = this.paginatedData.length;
+    for(let i = last; i > 0 ; i--){
+      this.pageArray.push(i);
+    }
   }
   
+  showPage(page: any){
+    this.currentIndex = page - 1;
+  }
   
 
 }

@@ -14,7 +14,6 @@ export class AppComponent {
   constructor(private _router: Router){
    _router.events.subscribe((event:Event) => {
       if(event instanceof NavigationEnd ){
-        console.log(event.url)
         if(event.url === '/login' || event.url === '/' || event.url === '/register'){
           this.hideNavBar = true;
         } else {

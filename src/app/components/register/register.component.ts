@@ -48,7 +48,6 @@ export class RegisterComponent implements OnInit {
         }else{
           this._userService.registerUser(this.registerForm.value).subscribe(
             (data: any) => {
-              console.log(data)
               if(data.message==='CREATED'){
                 this.options.keepAfterRouteChange = true;
                 this.alertService.success('Usuario creado correctamente, por favor inicie sesión', this.options);

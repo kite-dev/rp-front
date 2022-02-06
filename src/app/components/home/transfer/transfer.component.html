@@ -5,9 +5,9 @@
             <hr>
         </div>
     </div>
-    <div class="col-12">
-        <form [formGroup]="transferForm" (ngSubmit) ="submitForm()" class="form-horizontal">
-            <div class="row form-group mt-5">
+    <div class="col-12 ">
+        <form [formGroup]="transferForm" (ngSubmit) ="submitForm()" class="form-horizontal ">
+            <div class="row form-group">
                 <div class="col-6 dropdown mb-6">
                     <select class="form-control " formControlName="destiny"  (change)="changeSelected()">
                         <option selected>Seleccione Destinatario</option>
@@ -18,16 +18,40 @@
                 </div>
                       
             </div>
-            <hr *ngIf="showSelectedDetail">
-            <div *ngIf="showSelectedDetail">
-            Nombre: {{selectedAssociate.name}} <br>
-            Rut: {{selectedAssociate.rut}} <br>
-            Correo: {{selectedAssociate.email}} <br>
-            Banco: {{selectedAssociate.bank_name}} <br>
-            Numero de cuenta: {{selectedAssociate.number}} <br>
-            Tipo de cuenta: {{selectedAssociate.type_name}}
+            <div *ngIf="showSelectedDetail" class="col-6">
+                <table class="table table-borderless hover f-small-size w-40">
+                    <tr>
+                        <th>Rut</th>
+                        <td align="right">{{selectedAssociate.rut}}</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td align="right">{{selectedAssociate.name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Correo</th>
+                        <td align="right">{{selectedAssociate.email}}</td>
+                    </tr>
+                    <tr>
+                        <th>Telefono</th>
+                        <td align="right">{{selectedAssociate.cellphone}}</td>
+                    </tr>
+                    <tr>
+                        <th>Banco</th>
+                        <td align="right">{{selectedAssociate.bank_name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Tipo de cuenta</th>
+                        <td align="right">{{selectedAssociate.type_name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Numero de cuenta</th>
+                        <td align="right">{{selectedAssociate.number}}</td>
+                    </tr>
+
+
+                </table>
             </div>
-            <hr *ngIf="showSelectedDetail">
             <div class="row form-group mb-6" *ngIf="showSelectedDetail">
                 <div class="col-6">
                     <label for="number" class="form-label">Monto</label>
