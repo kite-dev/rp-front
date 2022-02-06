@@ -3,3 +3,11 @@
     right: 0;
     margin-right: 5%;
 }
+.header{
+    position:fixed;
+    top:0px;
+    width:100%;
+    color: white;
+    text-align: center;
+    z-index: 10;
+  }

@@ -51,7 +51,7 @@ export class TransferComponent implements OnInit {
   initForm(){
     this.transferForm = this._form.group({
       destiny: ['Seleccione Destinatario', [Validators.required]],
-      amount: [0, [Validators.required]],
+      amount: [0, [Validators.required,  Validators.min(1)]],
     })
   }
 

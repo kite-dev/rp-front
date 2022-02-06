@@ -71,14 +71,14 @@ export class AssociateComponent implements OnInit {
     .subscribe(
       (data: any) => {
         if(data.message === 'CREATED') {
-          this.alertService.success('Asociado creado con exito', this.options);
+          this.alertService.success('Nuevo destinatario guardado con exito', this.options);
           this.associateForm.reset();
         } else {
-          this.alertService.error('Error al crear asociado', this.options);
+          this.alertService.error('Error al crear destinatario', this.options);
         }
       },
       (error: any) => {
-        this.alertService.error('Error al crear asociado', this.options);
+        this.alertService.error('Error al crear destinatario', this.options);
       }
     );
   }

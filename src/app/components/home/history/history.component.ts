@@ -36,8 +36,8 @@ export class HistoryComponent implements OnInit {
     this._transferService.getTransfers(this.currentUserEmail)
     .subscribe(
       (data: any) => {
-        this.data = data;
-        this.filteredData = data;
+        this.data = data.reverse();
+        this.filteredData = this.data;
       },
       (error: any) => {
         this.alertService.error("Error al obtener los datos", this.options);
