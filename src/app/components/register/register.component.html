@@ -1,10 +1,10 @@
 
-<div class="wrapper fadeInDown">
+<div class="wrapper fadeInDown ">
   <div id="formContent">
     <!-- Tabs Titles -->
 
     <!-- Icon -->
-    <div class="fadeIn first">
+    <div class="fadeIn first p-3">
       Registrarse
     </div>
 
@@ -13,7 +13,7 @@
       <input type="email" id="login" class="fadeIn second" name="email"  formControlName="email"  placeholder="Correo">
       <input type="password" id="password1" class="fadeIn third" name="password1" formControlName="password1" placeholder="Contraseña">
       <input type="password" id="password2" class="fadeIn third" name="password2" formControlName="password2" placeholder="Repita">
-      <button type="submit" class="fadeIn fourth" [disabled]="!registerForm.valid || isLoading" >Ingresar</button>
+      <button type="submit" class="fadeIn fourth"   [ngClass]="{ 'disabled': !registerForm.valid}"  [disabled]="!registerForm.valid || isLoading" >Ingresar</button>
     </form>
     <div id="formFooter">
       <a class="underlineHover" routerLinkActive="active" id="./login" [routerLink]="['/login']" >Volver</a>

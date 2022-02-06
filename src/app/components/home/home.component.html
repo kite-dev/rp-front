@@ -1,4 +1,4 @@
-<h1>Angular 8 Alerts</h1>
+<!--<h1>Angular 8 Alerts</h1>
 <button class="btn btn-success m-1" (click)="alertService.success('Success!!', options)">Success</button>
 <button class="btn btn-danger m-1" (click)="alertService.error('Error :(', options)">Error</button>
 <button class="btn btn-info m-1" (click)="alertService.info('Some info....', options)">Info</button>
@@ -13,4 +13,20 @@
         <input type="checkbox" name="keepAfterRouteChange" id="keepAfterRouteChange" class="form-check-input" [(ngModel)]="options.keepAfterRouteChange">
         <label for="keepAfterRouteChange">Keep displaying after one route change</label>
     </div>
+</div>-->
+<div class="container">
+    <div class="row mt-5">
+        <h3 class="text-center">
+            Utiliza MyBankApp! para poder realizar tus transferencias de forma rapida y segura.
+        </h3>
+    </div>
+    <div class="row justify-content-center align-content-center mt-5 ">
+        <button class=" btn bg-info text-white mr-4" (click)="redirectTo('associate')"> 
+            Ir aNuevo Destinatario</button>
+        <button class=" btn bg-info text-white mr-4" (click)="redirectTo('transfer')"> 
+            Ir a transferencias</button>
+        <button class=" btn bg-info text-white" (click)="redirectTo('history')"> 
+            Ir a mi historial de transferencias</button>
+    </div>
+    
 </div>

@@ -4,19 +4,19 @@
     <!-- Tabs Titles -->
 
     <!-- Icon -->
-    <div class="fadeIn first">
-      Bienvenido
+    <div class="fadeIn first p-3">
+      Bienvenido a MyBankApp!
     </div>
 
     <!-- Login Form -->
     <form  [formGroup]="loginForm" (ngSubmit) ="submitForm()">
       <input type="email" id="login" class="fadeIn second" name="email"  formControlName="email"  placeholder="Correo">
       <input type="password" id="password" class="fadeIn third" name="password" formControlName="password" placeholder="Contraseña">
-      <button type="submit" class="fadeIn fourth" [disabled]="!loginForm.valid">Ingresar</button>
+      <button type="submit" class="fadeIn fourth"  [ngClass]="{ 'disabled': !loginForm.valid}" [disabled]="!loginForm.valid">Ingresar</button>
     </form>
 
     <div id="formFooter">
-      <a class="underlineHover" routerLinkActive="active" id="./register" [routerLink]="['/register']">Eres nuevo?, Registrate</a>
+      <a class="underlineHover" routerLinkActive="active" id="./register" [routerLink]="['/register']">¿Eres nuevo? Registrate</a>
     </div>
   </div>
 </div>
