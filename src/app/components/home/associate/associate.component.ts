@@ -72,6 +72,7 @@ export class AssociateComponent implements OnInit {
       (data: any) => {
         if(data.message === 'CREATED') {
           this.alertService.success('Asociado creado con exito', this.options);
+          this.associateForm.reset();
         } else {
           this.alertService.error('Error al crear asociado', this.options);
         }

@@ -62,6 +62,8 @@ export class TransferComponent implements OnInit {
       (data: any) => {
         if(data.message === 'CREATED') {
           this.alertService.success('Transferencia realizada con exito', this.options);
+          this.transferForm.reset();
+          this.showSelectedDetail = false;
         } else {
           this.alertService.error('Error al realizar la transferencia', this.options);
         }

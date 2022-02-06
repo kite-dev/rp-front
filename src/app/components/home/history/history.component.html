@@ -1,12 +1,13 @@
 
 <div class="container mt-5">
-    <div class="row">
+    <div class="row title">
         <div class="col-12">
             <h1>Historial</h1>
             <hr>
         </div>
     </div>
-    <table  class="row-border hover" *ngIf="data.length > 0">
+    <input type="text" [(ngModel)]="searchText" placeholder="Buscar..." (keyup)="filterData($event)" class="form-control">
+    <table  class="table row-border hover" *ngIf="filteredData.length > 0">
         <thead>
           <tr>
             <th>Destinatario</th>
@@ -17,15 +18,16 @@
           </tr>
         </thead>
         <tbody >
-          <tr *ngFor="let transfer of data">
+          <tr *ngFor="let transfer of filteredData">
             <td>{{transfer.name}}</td>
-           <td>{{transfer.rut}}</td>
+            <td>{{transfer.rut}}</td>
             <td>{{transfer.bank_name}}</td>
             <td>{{transfer.type_name}}</td>
-            <td>{{transfer.amount}}</td>
+            <td align="right">$ {{transfer.amount | number:'': 'es'}}</td>
           </tr>
         </tbody>
       </table>
     
       
 </div>
+

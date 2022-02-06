@@ -39,7 +39,8 @@ import { AlertComponent } from './components/alert/alert.component';
     ],
   exports: [
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
